@@ -1,9 +1,9 @@
 @import "tailwindcss";
-/*---break---*/
-@custom-variant dark (&:is(.dark *)); /*tailwind v4 dont have config file*/
-
+@custom-variant dark (&:is(.dark *));
+/*tailwind v4 dont have config file*/
+/* install shadcn */
 :root {
-  --font-work-sans: 'Work Sans', sans-serif;
+  --font-work-sans: "Work Sans", sans-serif;
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
@@ -77,7 +77,7 @@
   --radius-xl: calc(var(--radius) + 4px);
 }
 
-@layer utilities { 
+@layer utilities {
   .heading {
     @apply uppercase bg-[#1A237E] px-6 py-3 font-sans font-extrabold text-[#F7F7F7] sm:text-[54px] sm:leading-[64px] text-[36px] leading-[46px] max-w-5xl text-center my-5 border-y-4 border-[#FFC107];
   }
@@ -87,29 +87,52 @@
   .sub-heading {
     @apply font-medium text-[20px] text-[#FAFAFA] max-w-2xl text-center break-words;
   }
-  .search-form { 
-    @apply max-w-3xl w-full min-h-[80px] bg-[#FAFAFA] border-[5px] border-[#FFC107] rounded-[80px] text-[24px] mt-8 px-5 flex flex-row items-center gap-5 text-[#FAFAFA]; 
+  .search-form {
+    @apply max-w-3xl w-full min-h-[80px] bg-[#FAFAFA] border-[5px] border-[#FFC107] rounded-[80px] text-[24px] mt-8 px-5 flex flex-row items-center gap-5 text-[#FAFAFA];
   }
-  .search-input { 
-    @apply flex-1 font-bold text-[24px] text-[#1A237E] placeholder:font-semibold placeholder:text-[#1A237E] w-full h-auto outline-none; 
+  .search-input {
+    @apply flex-1 font-bold text-[24px] text-[#1A237E] placeholder:font-semibold placeholder:text-[#1A237E] w-full h-auto outline-none;
   }
-  .search-btn { 
-    @apply w-[50px] h-[50px] rounded-full bg-[#FFC107] flex justify-center items-center text-[#FAFAFA] ; 
+  .search-btn {
+    @apply w-[50px] h-[50px] rounded-full bg-[#FFC107] flex justify-center items-center text-[#FAFAFA];
   }
 
+  .section_container {
+    @apply text-[30px] text-[#1A237E] font-bold px-6 py-10 max-w-7xl mx-auto;
+  }
+  .card_grid {
+    @apply grid md:grid-cols-3 sm:grid-cols-2 gap-5;
+  }
+  .no-result {
+    @apply text-[#FAFAFA] text-sm font-normal;
+  }
+  .startup-card {
+    @apply bg-[#FAFAFA] border-[5px] border-[#000000] py-6 px-5 rounded-[22px] shadow-[#1A237E19] hover:border-[#1A237E] transition-all duration-500 hover:shadow-[#1A237E19] hover:bg-[#E8EAF6];
+  }
+  .startup-card_date {
+    @apply font-medium text-[16px] bg-[#E8EAF6] px-4 py-2 rounded-full group-hover:bg-[#FAFAFA];
+  }
+  .startup-card_desc {
+    @apply font-normal text-[16px] line-clamp-2 my-3 text-[#000000] break-all;
+  }
+  .startup-card_img {
+    @apply w-full h-[164px] rounded-[10px] object-cover;
+  }
+  .startup-form_btn {
+    @apply bg-[#1A237E] border-[4px] border-[#000000] rounded-full p-5 min-h-[70px] w-full font-bold text-[18px];
+  }
   .pattern {
     background-image: linear-gradient(
       to right,
       transparent 49.5%,
-      rgba(255, 193, 7, 0.5) 49.5%,   
-      rgba(255, 193, 7, 0.9) 50.5%,   
+      rgba(255, 193, 7, 0.5) 49.5%,
+      rgba(255, 193, 7, 0.9) 50.5%,
       transparent 50.5%
     );
     background-size: 6% 100%;
     background-position: center;
     background-repeat: repeat-x;
   }
-
 }
 
 body {
@@ -161,5 +184,4 @@ body {
   body {
     @apply bg-background text-foreground;
   }
-  
 }
