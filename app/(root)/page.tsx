@@ -1,26 +1,26 @@
 import Image from "next/image";
 import SearchForm from "../../components/SearchForm";
 import StartupCard from "@/components/StartupCard";
-
+import { STARTUPS_QUERY } from "@/sanity/lib/queries";
+import { StartupTypeCard } from "@/components/StartupCard";
+import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 export default async function Home({
   searchParams,
 }: {
   searchParams: Promise<{ query?: string }>;
 }) {
   const query = (await searchParams).query;
-  const posts = [
-    {
-      _createdAt: new Date(),
-      views: 55,
-      author: { _id: 1, name: "John Doe" },
-      _id: 1,
-      description: "This is a description",
-      image:
-        "https://tds-images.thedailystar.net/sites/default/files/styles/big_202/public/images/2025/03/23/blue_droid.png",
-      category: "Robots",
-      title: "We Robots",
-    },
-  ];
+  const params = { search: query || null };
+
+  const { data: posts } = await sanityFetch({
+    query: STARTUPS_QUERY,
+    params,
+  });
+  //to generate typescript type install-
+  //npx sanity@latest schema extract --path=./sanity/extract.json [to Generate typescript type]
+  //npx sanity@latest typegen generate
+  //to update typegen run - npm run typegen
+
   return (
     <>
       <section className="pink_container pattern">
@@ -39,7 +39,7 @@ export default async function Home({
         </p>
         <ul className="mt-7 card_grid">
           {posts?.length > 0 ? (
-            posts.map((post: StartupCardType) => (
+            posts.map((post: StartupTypeCard) => (
               <StartupCard key={post._id} post={post} />
             ))
           ) : (
@@ -47,6 +47,7 @@ export default async function Home({
           )}
         </ul>
       </section>
+      <SanityLive />
     </>
   );
 }
