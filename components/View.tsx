@@ -1,12 +1,22 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Ping from "@/components/Ping";
-import { STARTUP_VIEWS_QUERY } from "@/sanity/lib/queries";
-import { client } from "@/sanity/lib/client";
 
-const View = async ({ id }: { id: string }) => {
-  const totalViews = await client
-    .withConfig({ useCdn: false })
-    .fetch(STARTUP_VIEWS_QUERY, { id });
+const View = ({ id }: { id: string }) => {
+  const [views, setViews] = useState<number | null>(null);
+
+  useEffect(() => {
+    const incrementView = async () => {
+      try {
+        const res = await fetch(`/api/views/${id}`, { method: "POST" });
+        const data = await res.json();
+        if (data.view) setViews(data.view);
+      } catch (err) {
+        console.error("Error incrementing view:", err);
+      }
+    };
+    incrementView();
+  }, [id]);
 
   return (
     <>
@@ -14,7 +24,7 @@ const View = async ({ id }: { id: string }) => {
         <Ping />
       </div>
       <p className="view-text">
-        <span className="font-black">{totalViews} Views</span>
+        <span className="font-black">{views ?? "Loading..."} Views</span>
       </p>
     </>
   );

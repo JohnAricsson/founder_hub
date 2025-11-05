@@ -4,6 +4,7 @@ import StartupCard from "@/components/StartupCard";
 import { STARTUPS_QUERY } from "@/sanity/lib/queries";
 import { StartupTypeCard } from "@/components/StartupCard";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
+import { auth } from "@/auth";
 export default async function Home({
   searchParams,
 }: {
@@ -11,6 +12,9 @@ export default async function Home({
 }) {
   const query = (await searchParams).query;
   const params = { search: query || null };
+
+  const session = await auth();
+  console.log(session?.id);
 
   const { data: posts } = await sanityFetch({
     query: STARTUPS_QUERY,
@@ -28,7 +32,7 @@ export default async function Home({
           Pitch Your Startup, <br />
           Connect With Founders and Entrepreneurs
         </h1>
-        <p className="sub-heading !max-w-3xl">
+        <p className="sub-heading max-w-3xl!">
           Where founders connect with peers to rate, refine, and launch ideas.
         </p>
         <SearchForm query={query} />
