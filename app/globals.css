@@ -131,7 +131,27 @@
   .view-text {
     @apply font-medium text-[16px] bg-[#E8EAF6] px-4 py-2 rounded-lg capitalize;
   }
-
+  .startup-form {
+    @apply max-w-2xl mx-auto bg-[#FAFAFA] my-10 space-y-8 px-6;
+  }
+  .startup-form_label {
+    @apply font-bold text-[18px] text-black uppercase;
+  }
+  .startup-form_input {
+    @apply border-[3px] border-[#000000] px-5 py-7 text-[18px] text-[#000000] font-semibold rounded-full mt-3 placeholder:text-[#404040];
+  }
+  .startup-form_textarea {
+    @apply border-[3px] border-[#000000] p-5  text-[18px] text-[#000000] font-semibold rounded-[20px] mt-3 placeholder:text-[#404040];
+  }
+  .startup-form_error {
+    @apply text-[#EF4444] mt-2 ml-5;
+  }
+  .startup-form_editor {
+    @apply mt-3 border-[3px] border-[#000000] text-[18px] text-[#000000] font-semibold placeholder:text-[#404040];
+  }
+  .startup-form_btn {
+    @apply bg-[#1A237E] border-[4px] border-[#000000] rounded-full p-5 min-h-[70px] w-full font-bold text-[18px];
+  }
   .tag-tri {
     @apply before:content-[''] 
 
