@@ -1,5 +1,5 @@
 "use client";
-
+// USE SENTRY
 import React, { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -10,7 +10,8 @@ import { formSchema } from "@/lib/validation";
 import { z } from "zod";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
-import { useActionState } from "react"; // Assuming you have a custom hook for server actions
+import { useActionState } from "react";
+import { createPitch } from "@/lib/actions";
 
 const StartupForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -29,11 +30,11 @@ const StartupForm = () => {
 
       await formSchema.parseAsync(formValues);
 
-      const result = await createIdea(prevState, formData, pitch);
+      const result = await createPitch(prevState, formData, pitch);
 
       if (result.status === "SUCCESS") {
         toast.success("Startup created successfully!");
-        router.push(`/startup/${result.id}`);
+        router.push(`/startup/${result._id}`);
         return result;
       } else {
         toast.error("Please check your inputs and try again");
@@ -117,6 +118,7 @@ const StartupForm = () => {
           className="startup-form_input"
           required
           placeholder="Startup Category (Tech, Health, Education...)"
+          autoComplete="off"
         />
         {errors.category && (
           <p className="startup-form_error">{errors.category}</p>
@@ -133,6 +135,7 @@ const StartupForm = () => {
           className="startup-form_input"
           required
           placeholder="Startup Image URL"
+          autoComplete="off"
         />
         {errors.link && <p className="startup-form_error">{errors.link}</p>}
       </div>

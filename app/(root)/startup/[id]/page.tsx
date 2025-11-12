@@ -41,7 +41,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
               className="flex gap-2 items-start"
             >
               <Image
-                src={post.author.image}
+                src={post.author?.image || "https://placehold.co/64x64"}
                 alt="avatar"
                 width={64}
                 height={64}
