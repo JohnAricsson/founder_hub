@@ -1,5 +1,6 @@
 "use client";
 
+import { LogOut } from "lucide-react";
 import { signIn, signOut } from "next-auth/react";
 
 interface AuthButtonProps {
@@ -13,7 +14,8 @@ export default function AuthButton({ sessionExists }: AuthButtonProps) {
         onClick={() => signOut({ callbackUrl: "/" })}
         className="font-semibold cursor-pointer"
       >
-        Logout
+        <span className="max-sm:hidden">Logout</span>
+        <LogOut className="size-6 sm:hidden text-red-500" />
       </button>
     );
   } else {
