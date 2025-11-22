@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+**Overview:**
 
-## Getting Started
+Founder_Hub is a full-stack platform built with Next.js and Sanity designed to discover startups, share blog posts, and pitch new ideas. This project was my first full-stack development experience, created while learning from YouTube tutorials and hands-on experimentation. Through this project, I gained practical knowledge of Next.js API routing, SSR, SSG, ISR, partial rendering, headless CMS integration, and content management.
 
-First, run the development server:
+**Features**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+**User Authentication & Profiles**
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+GitHub Auth Integration – Users can sign up or log in with their GitHub accounts.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Author Profiles – Automatically generated profiles using GitHub details.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Blog Management**
 
-## Learn More
+Create Startup Blogs – Users can write and publish blogs about their startups.
 
-To learn more about Next.js, take a look at the following resources:
+Search Functionality – Search blogs by title, category, or author name.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Dynamic Rendering – Utilizes SSG, SSR, and ISR for optimized page performance.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Content Management**
 
-## Deploy on Vercel
+Headless CMS (Sanity) – Manage blog content efficiently.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Queries and Filtering – Fetch data dynamically and display it seamlessly on the frontend.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**UI & UX**
+
+shadCN UI Integration – Modern, responsive, and customizable UI components.
+
+Partial Rendering – Efficient page updates and faster load times.
+
+**Technologies Used**
+
+Next.js – React framework for server-side rendering and static site generation
+
+Sanity – Headless CMS for content management
+
+NextAuth.js – Authentication using GitHub OAuth
+
+shadCN UI – UI component library
+
+React, Tailwind CSS, TypeScript  – Frontend development
+
