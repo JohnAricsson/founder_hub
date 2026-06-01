@@ -99,11 +99,12 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         )}
       </div>
 
-      <section className="relative flex justify-end items-end">
-        <Suspense fallback={<Skeleton />}>
-          {" "}
-          <View id={id} />
-        </Suspense>
+      <section className="w-full flex justify-center mt-16 mb-10 px-4">
+        <div className="w-full max-w-6xl flex justify-end">
+          <Suspense fallback={<Skeleton />}>
+            <View id={id} />
+          </Suspense>
+        </div>
       </section>
     </>
   );
